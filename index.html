@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>진료과별 연구 주제 트렌드 | 전남대학교병원 의학도서관</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="viz-root">
+  <header>
+    <h1>진료과별 연구 주제 트렌드</h1>
+    <p class="sub">PubMed에 실린 논문 수를 주제별·연도별로 집계했습니다. · 전남대학교병원 의학도서관</p>
+  </header>
+
+  <div id="empty" class="notice" hidden>
+    아직 데이터가 수집되지 않았습니다. 저장소의 Actions 탭에서 워크플로를 한 번 실행해 주세요.
+  </div>
+
+  <main id="app" hidden>
+    <section class="filters" aria-label="필터">
+      <label>진료과
+        <select id="dept"></select>
+      </label>
+      <div class="seg" role="radiogroup" aria-label="표시 방식">
+        <button type="button" data-mode="count" class="on" role="radio" aria-checked="true">논문 수</button>
+        <button type="button" data-mode="rate" role="radio" aria-checked="false">전체 1만 편당</button>
+      </div>
+      <label>시작 연도
+        <select id="from"></select>
+      </label>
+      <label class="check"><input type="checkbox" id="showcur"> 올해(집계 중) 포함</label>
+      <button type="button" id="csv" class="ghost">CSV 내려받기</button>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 id="chart-title">연도별 추이</h2>
+        <span class="hint">주제는 최대 8개까지 함께 볼 수 있습니다 · 올해를 포함하면 점선으로 표시</span>
+      </div>
+      <div id="topic-picks" class="picks" aria-label="주제 선택"></div>
+      <div class="chart-wrap"><canvas id="chart" aria-label="주제별 연도별 논문 수 선그래프" role="img"></canvas></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>최근 5년 변화</h2>
+        <span class="hint" id="growth-hint"></span>
+      </div>
+      <div class="table-wrap">
+        <table id="growth">
+          <thead><tr>
+            <th>주제</th><th class="num" id="th-last"></th><th class="num">1만 편당</th>
+            <th class="num">5년 변화 (1만 편당 기준)</th><th>검색식</th><th>검토</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <p id="meta-line"></p>
+      <p>· 논문 수는 PubMed 검색식 결과 건수이며, 검색식에 따라 크게 달라집니다. 각 주제의 검색식을 눌러 PubMed에서 직접 확인할 수 있습니다.</p>
+      <p>· "1만 편당"은 같은 해 PubMed 전체 논문 수 대비 비율입니다. 전체 논문이 늘어나는 효과를 걸러 냅니다.</p>
+      <p>· 올해와 최근 연도는 등재가 늦게 반영되어 실제보다 적게 보일 수 있습니다. 증가·감소의 원인 해석은 포함하지 않습니다.</p>
+      <p>· 문의: 의학도서관</p>
+    </footer>
+  </main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
