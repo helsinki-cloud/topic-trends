@@ -45,14 +45,18 @@
 
     <section class="card">
       <div class="card-head">
-        <h2>최근 5년 변화</h2>
-        <span class="hint" id="growth-hint"></span>
+        <h2 id="growth-title">최근 5년 급상승 순위</h2>
       </div>
+      <p class="explain">
+        5년 전과 비교해 논문이 얼마나 늘었는지 순위로 보여 줍니다.
+        PubMed 전체 논문 수가 해마다 늘어나는 만큼은 빼고 계산했습니다.
+        예를 들어 <b>▲ 100%</b>는 같은 주제 논문의 비중이 5년 사이 2배가 됐다는 뜻입니다.
+        올해는 집계 중이라 계산에서 뺐습니다.
+      </p>
       <div class="table-wrap">
         <table id="growth">
           <thead><tr>
-            <th>주제</th><th class="num" id="th-last"></th><th class="num">1만 편당</th>
-            <th class="num">5년 변화 (1만 편당 기준)</th><th>검색식</th><th>검토</th>
+            <th class="num">순위</th><th>주제</th><th class="num">5년 증가율</th><th>검색식 (누르면 PubMed에서 열림)</th>
           </tr></thead>
           <tbody></tbody>
         </table>

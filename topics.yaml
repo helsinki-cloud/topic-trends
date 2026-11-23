@@ -5,8 +5,9 @@
 # - [tiab] = 제목/초록, [mh] = MeSH 주제어
 # - 아래 검색식은 "초안"입니다. 반드시 PubMed 화면에서 직접 검색해
 #   상위 결과가 주제에 맞는지 확인한 뒤 reviewed 날짜를 채우세요.
-#   reviewed가 비어 있으면 대시보드에 "검토 전"으로 표시됩니다.
+#   reviewed는 사서용 내부 기록이며 대시보드에는 표시되지 않습니다.
 # - id는 영문 소문자/숫자/밑줄만 씁니다. 한 번 정하면 바꾸지 마세요.
+# - 진료과 이름(name_ko)은 한글, 주제 이름(name)은 영어로 씁니다.
 # =====================================================================
 
 settings:
@@ -19,48 +20,48 @@ departments:
     name_ko: 이비인후과
     topics:
       - id: crs_nasal_polyps
-        name_ko: 비용종 동반 만성 비부비동염
+        name: "Chronic rhinosinusitis with nasal polyps (CRSwNP)"
         query: '("chronic rhinosinusitis"[tiab] AND ("nasal polyp*"[tiab] OR CRSwNP[tiab]))'
         reviewed: ""
 
       - id: olfactory_dysfunction
-        name_ko: 후각 장애
+        name: "Olfactory dysfunction"
         query: '("olfactory dysfunction"[tiab] OR anosmia[tiab] OR hyposmia[tiab] OR "smell loss"[tiab])'
         reviewed: ""
 
       - id: cochlear_implant
-        name_ko: 인공와우
+        name: "Cochlear implant"
         query: '("cochlear implant*"[tiab])'
         reviewed: ""
 
       - id: tinnitus
-        name_ko: 이명
+        name: "Tinnitus"
         query: '(tinnitus[tiab])'
         reviewed: ""
 
       - id: hypoglossal_stimulation
-        name_ko: 설하신경 자극술 (수면무호흡)
+        name: "Hypoglossal nerve stimulation"
         query: '("hypoglossal nerve stimulation"[tiab] OR "upper airway stimulation"[tiab])'
         reviewed: ""
 
       - id: hpv_oropharyngeal
-        name_ko: HPV 관련 구인두암
+        name: "HPV-associated oropharyngeal cancer"
         query: '((HPV[tiab] OR "human papillomavirus"[tiab]) AND oropharyn*[tiab] AND (cancer[tiab] OR carcinoma[tiab]))'
         reviewed: ""
 
       - id: transoral_robotic
-        name_ko: 경구강 로봇수술 (TORS)
+        name: "Transoral robotic surgery (TORS)"
         query: '("transoral robotic surgery"[tiab] OR TORS[tiab])'
         reviewed: ""
         # 주의: TORS 약어가 다른 뜻으로 쓰인 논문이 섞일 수 있음 → 검토 필요
 
       - id: pppd
-        name_ko: 지속성 체위-지각성 어지럼 (PPPD)
+        name: "Persistent postural-perceptual dizziness (PPPD)"
         query: '("persistent postural-perceptual dizziness"[tiab] OR PPPD[tiab])'
         reviewed: ""
 
       - id: lpr
-        name_ko: 인후두 역류
+        name: "Laryngopharyngeal reflux (LPR)"
         query: '("laryngopharyngeal reflux"[tiab])'
         reviewed: ""
 
@@ -68,47 +69,47 @@ departments:
     name_ko: 호흡기내과
     topics:
       - id: ipf_antifibrotic
-        name_ko: 특발성 폐섬유증 항섬유화제
+        name: "Antifibrotic therapy in pulmonary fibrosis"
         query: '(("idiopathic pulmonary fibrosis"[tiab] OR "progressive pulmonary fibrosis"[tiab]) AND (nintedanib[tiab] OR pirfenidone[tiab] OR antifibrotic*[tiab]))'
         reviewed: ""
 
       - id: interstitial_lung_abnormalities
-        name_ko: 간질성 폐 이상 (ILA)
+        name: "Interstitial lung abnormalities (ILA)"
         query: '("interstitial lung abnormalit*"[tiab])'
         reviewed: ""
 
       - id: bronchiectasis
-        name_ko: 기관지확장증
+        name: "Bronchiectasis"
         query: '(bronchiectasis[tiab] NOT "cystic fibrosis"[tiab])'
         reviewed: ""
 
       - id: ntm
-        name_ko: 비결핵 항산균 폐질환
+        name: "Nontuberculous mycobacterial (NTM) lung disease"
         query: '("nontuberculous mycobacteri*"[tiab] OR "non-tuberculous mycobacteri*"[tiab] OR "Mycobacterium avium complex"[tiab])'
         reviewed: ""
 
       - id: copd_biologics
-        name_ko: COPD 생물학적 제제
+        name: "Biologics in COPD"
         query: '((COPD[tiab] OR "chronic obstructive pulmonary disease"[tiab]) AND (dupilumab[tiab] OR mepolizumab[tiab] OR benralizumab[tiab] OR biologic*[tiab]))'
         reviewed: ""
 
       - id: prism
-        name_ko: PRISm (보존비 폐활량 저하)
+        name: "Preserved ratio impaired spirometry (PRISm)"
         query: '("preserved ratio impaired spirometry"[tiab] OR PRISm[tiab])'
         reviewed: ""
         # 주의: PRISm은 프리즘(prism)과 대소문자 구분 없이 검색됨 → 노이즈 검토 필요
 
       - id: lung_cancer_screening
-        name_ko: 저선량 CT 폐암 검진
+        name: "Lung cancer screening (LDCT)"
         query: '("lung cancer screening"[tiab] OR ("low-dose"[tiab] AND "computed tomography"[tiab] AND "lung cancer"[tiab]))'
         reviewed: ""
 
       - id: ebus
-        name_ko: 기관지내초음파 (EBUS)
+        name: "Endobronchial ultrasound (EBUS)"
         query: '("endobronchial ultrasound"[tiab] OR EBUS[tiab])'
         reviewed: ""
 
       - id: vaping_lung
-        name_ko: 전자담배 관련 폐질환
+        name: "E-cigarettes and lung disease"
         query: '(("e-cigarette*"[tiab] OR vaping[tiab] OR EVALI[tiab]) AND (lung[tiab] OR pulmonary[tiab] OR respiratory[tiab]))'
         reviewed: ""

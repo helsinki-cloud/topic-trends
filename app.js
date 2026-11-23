@@ -43,6 +43,7 @@
   const fmt = (v) =>
     v === null || v === undefined ? "–" :
     state.mode === "count" ? Math.round(v).toLocaleString("ko-KR") : v.toFixed(2);
+  const tname = (t) => t.name || t.name_ko || t.id;
   const pubmedUrl = (q) => "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(q);
 
   function freeSlot() {
@@ -107,7 +108,7 @@
     d.topics.forEach((t) =>
       allYears.forEach((y) => {
         const n = counts[t.id]?.[y];
-        rows.push([d.name_ko, t.name_ko, y, n ?? "", totals[y] ?? "",
+        rows.push([d.name_ko, tname(t), y, n ?? "", totals[y] ?? "",
           n != null && totals[y] ? ((n / totals[y]) * 10000).toFixed(4) : "", t.query]);
       })
     );
@@ -131,7 +132,7 @@
       b.className = "pick" + (on ? " on" : "");
       b.disabled = !on && full;
       b.setAttribute("aria-pressed", on);
-      b.innerHTML = `<span class="dot"></span>${t.name_ko}`;
+      b.innerHTML = `<span class="dot"></span>${tname(t)}`;
       if (on) b.querySelector(".dot").style.background = css(`--s${colorOf.get(t.id)}`);
       b.onclick = () => { on ? unselectTopic(t.id) : selectTopic(t.id); renderPicks(); renderChart(); };
       box.appendChild(b);
@@ -173,7 +174,7 @@
       .map((t) => {
         const color = css(`--s${colorOf.get(t.id)}`);
         return {
-          label: t.name_ko,
+          label: tname(t),
           data: years.map((y) => value(t.id, y)),
           borderColor: color,
           backgroundColor: color,
@@ -222,31 +223,26 @@
     chart = new Chart(document.getElementById("chart"), cfg);
   }
 
-  // ---------- 5년 변화 표 ----------
+  // ---------- 최근 5년 급상승 순위 ----------
   function renderTable() {
     const base = lastFull - 5;
-    document.getElementById("th-last").textContent = `${lastFull}년 논문 수`;
-    document.getElementById("growth-hint").textContent =
-      `${base}년 대비 ${lastFull}년 (마지막 완성 연도) · 변화율 높은 순`;
+    document.getElementById("growth-title").textContent = `최근 5년 급상승 순위 (${base} → ${lastFull})`;
     const rate = (tid, y) => (counts[tid]?.[y] != null && totals[y] ? (counts[tid][y] / totals[y]) * 10000 : null);
     const rows = deptObj().topics.map((t) => {
       const r1 = rate(t.id, lastFull), r0 = rate(t.id, base);
-      const g = r0 && r1 != null ? (r1 / r0 - 1) * 100 : null;
-      return { t, n: counts[t.id]?.[lastFull], r1, g };
+      return { t, g: r0 && r1 != null ? (r1 / r0 - 1) * 100 : null };
     }).sort((a, b) => (b.g ?? -Infinity) - (a.g ?? -Infinity));
 
     const tb = document.querySelector("#growth tbody");
     tb.innerHTML = "";
-    rows.forEach(({ t, n, r1, g }) => {
+    rows.forEach(({ t, g }, i) => {
+      const gTxt = g === null ? "–" : Math.abs(g) < 0.5 ? "변화 없음" : `${g > 0 ? "▲" : "▼"} ${Math.abs(g).toFixed(0)}%`;
       const tr = document.createElement("tr");
-      const gTxt = g === null ? "–" : Math.abs(g) < 0.5 ? "±0%" : `${g > 0 ? "▲ " : "▼ "}${Math.abs(g).toFixed(0)}%`;
       tr.innerHTML = `
-        <td>${t.name_ko}</td>
-        <td class="num">${n != null ? n.toLocaleString("ko-KR") : "–"}</td>
-        <td class="num">${r1 != null ? r1.toFixed(2) : "–"}</td>
+        <td class="num rank">${i + 1}</td>
+        <td>${escapeHtml(tname(t))}</td>
         <td class="num ${g > 0 ? "up" : ""}">${gTxt}</td>
-        <td class="query"><a href="${pubmedUrl(t.query)}" target="_blank" rel="noopener">${escapeHtml(t.query)}</a></td>
-        <td>${t.reviewed ? `<span class="badge ok">${t.reviewed}</span>` : `<span class="badge">검토 전</span>`}</td>`;
+        <td class="query"><a href="${pubmedUrl(t.query)}" target="_blank" rel="noopener">${escapeHtml(t.query)}</a></td>`;
       tb.appendChild(tr);
     });
   }

@@ -94,7 +94,7 @@ def main() -> int:
         for t in dept["topics"]:
             if args.only and t["id"] != args.only:
                 continue
-            print(f"[{dept['name_ko']}] {t['name_ko']}")
+            print(f"[{dept['name_ko']}] {t.get('name') or t.get('name_ko')}")
             counts[t["id"]] = {}
             for y in years:
                 counts[t["id"]][str(y)] = count(year_term(t["query"], y))
@@ -118,7 +118,8 @@ def main() -> int:
                 "id": d["id"],
                 "name_ko": d["name_ko"],
                 "topics": [
-                    {k: t.get(k, "") for k in ("id", "name_ko", "query", "reviewed")}
+                    {"id": t["id"], "name": t.get("name") or t.get("name_ko", ""),
+                     "query": t["query"], "reviewed": t.get("reviewed", "")}
                     for t in d["topics"]
                 ],
             }

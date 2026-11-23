@@ -90,6 +90,8 @@ th { color: var(--text-secondary); font-weight: 600; white-space: nowrap; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 td.query a { color: var(--accent); font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; word-break: break-all; }
 .up { color: var(--text-primary); font-weight: 600; }
+td.rank { color: var(--text-muted); width: 3em; }
+.explain { color: var(--text-secondary); font-size: 14px; margin: 0 0 12px; }
 .badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text-muted); white-space: nowrap; }
 .badge.ok { color: var(--text-primary); }
 
