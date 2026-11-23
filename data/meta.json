@@ -1,0 +1,129 @@
+{
+ "collected_at_utc": "2026-11-23T00:35:45+00:00",
+ "source": "PubMed E-utilities (esearch, rettype=count)",
+ "date_field": "[dp] Publication Date",
+ "start_year": 2005,
+ "current_year": 2026,
+ "departments": [
+  {
+   "id": "otolaryngology",
+   "name_ko": "이비인후과",
+   "topics": [
+    {
+     "id": "crs_nasal_polyps",
+     "name_ko": "비용종 동반 만성 비부비동염",
+     "query": "(\"chronic rhinosinusitis\"[tiab] AND (\"nasal polyp*\"[tiab] OR CRSwNP[tiab]))",
+     "reviewed": ""
+    },
+    {
+     "id": "olfactory_dysfunction",
+     "name_ko": "후각 장애",
+     "query": "(\"olfactory dysfunction\"[tiab] OR anosmia[tiab] OR hyposmia[tiab] OR \"smell loss\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "cochlear_implant",
+     "name_ko": "인공와우",
+     "query": "(\"cochlear implant*\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "tinnitus",
+     "name_ko": "이명",
+     "query": "(tinnitus[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "hypoglossal_stimulation",
+     "name_ko": "설하신경 자극술 (수면무호흡)",
+     "query": "(\"hypoglossal nerve stimulation\"[tiab] OR \"upper airway stimulation\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "hpv_oropharyngeal",
+     "name_ko": "HPV 관련 구인두암",
+     "query": "((HPV[tiab] OR \"human papillomavirus\"[tiab]) AND oropharyn*[tiab] AND (cancer[tiab] OR carcinoma[tiab]))",
+     "reviewed": ""
+    },
+    {
+     "id": "transoral_robotic",
+     "name_ko": "경구강 로봇수술 (TORS)",
+     "query": "(\"transoral robotic surgery\"[tiab] OR TORS[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "pppd",
+     "name_ko": "지속성 체위-지각성 어지럼 (PPPD)",
+     "query": "(\"persistent postural-perceptual dizziness\"[tiab] OR PPPD[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "lpr",
+     "name_ko": "인후두 역류",
+     "query": "(\"laryngopharyngeal reflux\"[tiab])",
+     "reviewed": ""
+    }
+   ]
+  },
+  {
+   "id": "pulmonology",
+   "name_ko": "호흡기내과",
+   "topics": [
+    {
+     "id": "ipf_antifibrotic",
+     "name_ko": "특발성 폐섬유증 항섬유화제",
+     "query": "((\"idiopathic pulmonary fibrosis\"[tiab] OR \"progressive pulmonary fibrosis\"[tiab]) AND (nintedanib[tiab] OR pirfenidone[tiab] OR antifibrotic*[tiab]))",
+     "reviewed": ""
+    },
+    {
+     "id": "interstitial_lung_abnormalities",
+     "name_ko": "간질성 폐 이상 (ILA)",
+     "query": "(\"interstitial lung abnormalit*\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "bronchiectasis",
+     "name_ko": "기관지확장증",
+     "query": "(bronchiectasis[tiab] NOT \"cystic fibrosis\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "ntm",
+     "name_ko": "비결핵 항산균 폐질환",
+     "query": "(\"nontuberculous mycobacteri*\"[tiab] OR \"non-tuberculous mycobacteri*\"[tiab] OR \"Mycobacterium avium complex\"[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "copd_biologics",
+     "name_ko": "COPD 생물학적 제제",
+     "query": "((COPD[tiab] OR \"chronic obstructive pulmonary disease\"[tiab]) AND (dupilumab[tiab] OR mepolizumab[tiab] OR benralizumab[tiab] OR biologic*[tiab]))",
+     "reviewed": ""
+    },
+    {
+     "id": "prism",
+     "name_ko": "PRISm (보존비 폐활량 저하)",
+     "query": "(\"preserved ratio impaired spirometry\"[tiab] OR PRISm[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "lung_cancer_screening",
+     "name_ko": "저선량 CT 폐암 검진",
+     "query": "(\"lung cancer screening\"[tiab] OR (\"low-dose\"[tiab] AND \"computed tomography\"[tiab] AND \"lung cancer\"[tiab]))",
+     "reviewed": ""
+    },
+    {
+     "id": "ebus",
+     "name_ko": "기관지내초음파 (EBUS)",
+     "query": "(\"endobronchial ultrasound\"[tiab] OR EBUS[tiab])",
+     "reviewed": ""
+    },
+    {
+     "id": "vaping_lung",
+     "name_ko": "전자담배 관련 폐질환",
+     "query": "((\"e-cigarette*\"[tiab] OR vaping[tiab] OR EVALI[tiab]) AND (lung[tiab] OR pulmonary[tiab] OR respiratory[tiab]))",
+     "reviewed": ""
+    }
+   ]
+  }
+ ]
+}
